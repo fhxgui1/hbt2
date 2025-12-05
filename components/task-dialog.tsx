@@ -23,7 +23,7 @@ export function TaskDialog({ open, onOpenChange, onSuccess }: TaskDialogProps) {
   const [descricao, setDescricao] = useState("")
   const [area, setArea] = useState<string>("produtividade")
   const [recompensa, setRecompensa] = useState("10")
-  const [duedate, setduedate] = useState("")
+  const [duedate, setduedate] = useState(new Date().toISOString().split('T')[0])
   const [objectiveId, setObjectiveId] = useState<string>("") // Adicionado atrelamento a objetivo
   const [objectives, setObjectives] = useState<Objective[]>([])
   const [loading, setLoading] = useState(false)
@@ -51,7 +51,7 @@ export function TaskDialog({ open, onOpenChange, onSuccess }: TaskDialogProps) {
           descricao,
           area,
           recompensa: Number.parseInt(recompensa),
-          objectiveId: objectiveId || undefined, // Incluindo atrelamento
+          objectiveId: objectiveId || undefined,
           duedate,
         }),
       })
@@ -60,7 +60,7 @@ export function TaskDialog({ open, onOpenChange, onSuccess }: TaskDialogProps) {
       setDescricao("")
       setArea("produtividade")
       setRecompensa("10")
-      setduedate("")
+      setduedate(new Date().toISOString().split('T')[0])
       setObjectiveId("")
       onOpenChange(false)
       onSuccess?.()

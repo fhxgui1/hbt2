@@ -314,6 +314,7 @@ export async function getTask(id: string): Promise<Task | undefined> {
 }
 
 export async function createTask(task: Task): Promise<Task> {
+  
   await sql`
     INSERT INTO tasks (id, titulo, descricao, area, recompensa, duedate, completed)
     VALUES (${task.id}, ${task.titulo}, ${task.descricao}, ${task.area}, ${task.recompensa}, ${task.duedate}, ${task.completed});
